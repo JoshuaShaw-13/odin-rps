@@ -1,5 +1,5 @@
-let humanScore = 0
-let computerScore = 0
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     let randNum = Math.random();
@@ -69,9 +69,37 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-let compChoice = getComputerChoice()
-let humChoice = getHumanChoice()
+function playGame() {
+    let round = 1;
+    let compChoice;
+    let humChoice;
+    while (round <= 5) {
+        console.log("Round " + round + " of 5")
+        
+        humChoice = getHumanChoice();
+        compChoice = getComputerChoice();
 
-console.log("Your choice: "+humChoice);
-console.log("Computer choice : "+compChoice);
-playRound(humChoice, compChoice)
+        console.log("Your choice: " + humChoice);
+        console.log("Computer choice : " + compChoice);
+
+        playRound(humChoice, compChoice);
+
+        console.log("Your score: " + humanScore);
+        console.log("Computer's score: " + computerScore);
+        console.log(" ")
+
+        round++;
+    }
+
+    if (humanScore > computerScore) {
+        console.log("You win the game with a score of " + humanScore + "! The computer had a score of " + computerScore + ".")
+    }
+    else if (computerScore > humanScore) {
+        console.log("You lost the game with a score of " + humanScore + ". The computer had a score of " + computerScore + ".")
+    }
+    else {
+        console.log("You tied the game with a score of " + humanScore + ".")
+    }
+}
+
+playGame()
